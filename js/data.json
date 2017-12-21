@@ -1,0 +1,16 @@
+{
+    "task" :
+            [
+		{ "value": "apple", "correct": "true"},
+		{ "value": "pear", "correct": "true"},
+		{ "value": "pineapple", "correct": "true"},
+		{ "value": "apricot", "correct": "true"},
+		{ "value": "raspberries", "correct": "false"},
+                { "value": "strawberry", "correct": "false"}
+
+            ]
+}
+
+
+
+

@@ -1,0 +1,69 @@
+<html ng-app ="App">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <title>Task</title>
+</head>
+<body ng-controller="Ctrl">
+    <div class="panel panel-success">
+        <div class="panel-heading">Denis Yegorov</div>
+            <div class="panel-body">                 
+                <h2>Task</h2>
+                <div>                    
+                    <div>
+                         <div class="panel panel-info">
+                            <div class="panel-heading">Choose the correct answer</div>
+                            <div class="panel-body">Find fruits on the list</div> 
+                            <form name="select" enctype="multipart/form-data" method="POST">
+                                <select ng-model="selectedModel" ng-options="x.value for x in listOfTask.value_1" ng-change="calcScore(selectedModel, 'noCheck')" class="form-control" id="sel1">                                
+                                </select>
+                            </form>                            
+                            <label class="label label-success">Score: <b>{{score.value_1}}</b></label>
+                            <label class="label label-danger">Incorrect choice: <b>{{IncorrectChoice.value_1}}</b></label>
+                            <label class="label label-info"><b>Number of tasks: </b> {{lenghtTask}}</label>
+                            <label class="label label-info"><b>Correct answers in the list: </b> {{correctAnsw}}</label>
+                            <label class="label label-info"><b>Wrong answers in the list: </b> {{wrongAnsw}}</label>
+                        </div> 
+                        
+                        <div class="panel panel-success">
+                            <div class="panel-heading">Choose the correct answer</div>
+                            <div class="panel-body">Find fruits on the list</div> 
+                            <div class="checkbox" ng-repeat="tsk in listOfTask.value_2">
+                                <label><input type="checkbox" ng-model="selectedModelCh" ng-change="calcScore(tsk, selectedModelCh)" ng-true-value="'YES'" ng-false-value="'NO'" name="{{tsk.value}}" id="{{tsk.value}}">{{tsk.value}}</label>
+                            </div>                               
+                            <label class="label label-success">Score: <b>{{score.value_2}}</b></label>
+                            <label class="label label-danger">Incorrect choice: <b>{{IncorrectChoice.value_2}}</b></label>
+                            <label class="label label-info"><b>Number of tasks: </b> {{lenghtTask}}</label>
+                            <label class="label label-info"><b>Correct answers in the list: </b> {{correctAnsw}}</label>
+                            <label class="label label-info"><b>Wrong answers in the list: </b> {{wrongAnsw}}</label>
+                        </div>                       
+                    </div>
+                    <div  class="panel panel-default">
+                        <button  type="button" class="btn btn-primary btn-lg btn-block" ng-click="resetAll()">RESET RESULT</button> 
+                    </div>
+                </div>
+                <br>
+                <div>			
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>VALUE</th> 
+                                <th>CORRECT</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="info" ng-repeat="ts in listOfTask.value_2">
+                                    <td>{{ts.value}}</td>       
+                                    <td>{{ts.correct}}</td>
+                            </tr>
+                        </tbody>                            
+                    </table>			
+                </div>                    
+        </div>       
+    </div>
+</body>
+</html>
